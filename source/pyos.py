@@ -12,13 +12,13 @@ class os_t:
 
 		self.terminal.enable_curses()
 
-		# recebe o que está sendo digitado no terminal
+		# recebe o que esta sendo digitado no terminal
 		self.console_str = ""
 
 
 		self.terminal.console_print("this is the console, type the commands here\n")
 
-	# função que existe no linux xD  (print (K)ernel)
+	# funcao que existe no linux xD  (print (K)ernel)
 	# saida do kernel
 	def printk(self, msg):
 		self.terminal.kernel_print("kernel: " + msg + "\n")
@@ -39,8 +39,11 @@ class os_t:
 		elif (key == curses.KEY_ENTER) or (key == ord('\n')):
 			return
 
+		self.terminal.console_print(strchar)
+
 	def handle_interrupt (self, interrupt):
-		self.terminal.console_print(interrupt)
+		if interrupt == pycfg.INTERRUPT_KEYBOARD:
+			self.interrupt_keyboard()
 		return
 
 	def syscall (self):
