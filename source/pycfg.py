@@ -6,7 +6,6 @@ MEMORY_SIZE_WITHOUT_OS = 256
 # registradores
 NREGS = 8
 
-# falha de proteção de memória
 INTERRUPT_MEMORY_PROTECTION_FAULT       = 1
 
 # teclado
@@ -16,5 +15,5 @@ INTERRUPT_KEYBOARD                      = 2
 INTERRUPT_TIMER                         = 3
 
 
-# ciclos para interrupção do processador
+# ciclos para interrupcao do processador
 TIMER_THRESHOLD = 200

@@ -156,25 +156,21 @@ class terminal_t:
 			curses.endwin()
 			self.curses_on = 0
 
-# A cada determinado período de tempo, o timer 
+ 
 class timer_t:
 	def __init__ (self, cpu):
 		self.cpu = cpu
 
-		# contador
 		self.count = 0
 
 	def run_cycle (self):
-		# se o contador for maior que o valor máximo para interromper
-		if self.count >= pycfg.TIMER_THRESHOLD:
-			
-			# interrompe o processador e reseta o valor do contador para 0
+
+		if self.count >= pycfg.TIMER_THRESHOLD:			
 			if self.cpu.set_interrupt(pycfg.INTERRUPT_TIMER) == True:
 				self.count = 0
 		else:
 			self.count = self.count + 1
 
-# vetor memória
 class memory_t:
 	def __init__ (self, terminal, size):
 		self.terminal = terminal
