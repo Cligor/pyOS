@@ -34,12 +34,19 @@ class os_t:
 
 		if ((key >= ord('a')) and (key <= ord('z'))) or ((key >= ord('A')) and (key <= ord('Z'))) or ((key >= ord('0')) and (key <= ord('9'))) or (key == ord(' ')) or (key == ord('-')) or (key == ord('_')) or (key == ord('.')):
 			strchar = chr(key)
+			self.console_str = self.console_str + strchar
 		elif key == curses.KEY_BACKSPACE:
+			self.terminal.console_print('\r ')
+			self.console_str = self.console_str[:-1]
+			self.terminal.console_print(self.console_str)
 			return
 		elif (key == curses.KEY_ENTER) or (key == ord('\n')):
+			self.console_str = ''
+			self.terminal.console_print('\n')
 			return
 
 		self.terminal.console_print(strchar)
+		
 
 	def handle_interrupt (self, interrupt):
 		if interrupt == pycfg.INTERRUPT_KEYBOARD:
